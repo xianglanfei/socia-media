@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: socia-media-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: POSTGRES_URL
+        fromDatabase:
+          name: socia-media-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: socia-media-redis
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: LLM_API_KEY
+        sync: false
+
+databases:
+  - name: socia-media-db
+    databaseName: socia_media
+    user: socia_media
+
+  - type: redis
+    name: socia-media-redis
+    maxmemoryPolicy: allkeys-lru
+    plan: free
