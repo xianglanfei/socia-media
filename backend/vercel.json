@@ -1,0 +1,12 @@
+{
+  "buildCommand": "go build -o bin/server cmd/server/main.go",
+  "outputDirectory": "bin",
+  "framework": null,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/server"
+    }
+  ],
+  "installCommand": "go mod download"
+}

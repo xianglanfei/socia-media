@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd backend && go build -o bin/server cmd/server/main.go",
+  "outputDirectory": "backend/bin",
+  "functionsDirectory": "",
+  "installCommand": "cd backend && go mod download",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/backend/bin/server"
+    }
+  ]
+}
